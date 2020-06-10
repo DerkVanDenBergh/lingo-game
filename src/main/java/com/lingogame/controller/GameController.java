@@ -48,7 +48,7 @@ public class GameController {
         var params = new HashMap<String, Object>();
 
         if(game.getWord().equals(word)) {
-            game.setFeedback(generateFeedback(game.getWord(), word));
+            game.setFeedback(gameService.generateFeedback(game.getWord(), word));
             game.setScore(game.getScore() + (game.getWord().length() * 10));
             game.setTurn(game.getTurn() + 1);
             params.put("status", "won");
@@ -56,9 +56,10 @@ public class GameController {
             if(game.getTurn() >= 4) {
                 game.setConcluded(true);
                 game.setTurn(game.getTurn() + 1);
+                game.setFeedback(gameService.generateFeedback(game.getWord(), word));
                 params.put("status", "lost");
             } else {
-                game.setFeedback(generateFeedback(game.getWord(), word));
+                game.setFeedback(gameService.generateFeedback(game.getWord(), word));
                 game.setTurn(game.getTurn() + 1);
                 params.put("status", "ongoing");
             }
@@ -112,7 +113,10 @@ public class GameController {
 
         gameService.save(game);
 
-        return "succes";
+        var params = new HashMap<String, Object>();
+        params.put("word", game.getWord());
+
+        return new JSONObject(params).toString();
     }
 
     @GetMapping(path = "/games", produces = "application/json")
@@ -122,20 +126,5 @@ public class GameController {
         params.put("games", gameService.findAll());
 
         return new JSONObject(params).toString();
-    }
-
-    public String generateFeedback(String correctWord, String guessedWord) {
-        StringBuilder feedback = new StringBuilder();
-        for(int i = 0; i < correctWord.length(); i++) {
-            if(guessedWord.charAt(i) == correctWord.charAt(i)) {
-                feedback.append("c");
-            } else if(correctWord.indexOf(guessedWord.charAt(i)) != -1) {
-                feedback.append("a");
-            } else {
-                feedback.append("f");
-            }
-        }
-
-        return feedback.toString();
     }
 }

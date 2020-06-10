@@ -1,10 +1,11 @@
-function startTimer() {
-    var countdown = new Date(Date.now()+60*1000)
+function startTimer(time, gameEnd) {
+    clearInterval(window.interval);
+    var countdown = new Date(Date.now()+time*1000)
     var timer = document.getElementById("timerClock");
 
     window.interval = setInterval(function() {
         var timeLeft = countdown.getTime() - Date.now();
-        if(timeLeft < 0) {
+        if((timeLeft < 0) && (gameEnd)) {
             clearInterval(interval);
             timeLeft = 0;
             gameOver();
@@ -18,7 +19,9 @@ $( document ).ready(function() {
     var gameInfo = createGame();
 
     gameId = gameInfo.gameId;
-    window.turn = 0;
+    window.round = 1;
+
+    $("#gameFeedback").html("Ronde " + window.round).css("color", "cornflowerblue");
 
     initializeLingoTable(gameInfo.firstLetter, 5);
 
@@ -44,7 +47,7 @@ $( document ).ready(function() {
                 setTimeout(function() {
                     var audio = new Audio('../sound/succes.mp3');
                     audio.play();
-                },data.feedback.length * 210);
+                },data.feedback.length * 250);
 
 
                 setTimeout(function() {
@@ -95,6 +98,7 @@ function nextRound(gameId) {
         }
     });
 
+    $("#gameFeedback").html("Ronde " + window.round++).css("color", "cornflowerblue");
     initializeLingoTable(data.firstLetter, data.wordLength);
 }
 
@@ -115,52 +119,58 @@ function initializeLingoTable(firstLetter, wordLength) {
         "height": "20%"
     });
 
-    clearInterval(window.interval);
-    startTimer();
+    startTimer(60, true);
 }
 
 async function processFeedback(data, word) {
     $("#scoreCount").html(data.score);
     var row = $("#lingoTable tr").eq(data.turn);
+    var correctWord = ".".repeat(data.feedback.length);
     for(i = 0; i < data.feedback.length; i++) {
         if(data.feedback.charAt(i) === "c") {
             row.find("td").eq(i).html(word.charAt(i)).css("background-color", "red");
+            correctWord = correctWord.substring(0, i) + word.charAt(i) + correctWord.substring(i + 1);
             var audio = new Audio('../sound/correct.mp3');
             audio.play();
         } else if(data.feedback.charAt(i) === "a") {
             row.find("td").eq(i).html(word.charAt(i)).css("background-color", "yellow");
-            word = word.substring(0, i) + "." + word.substring(i + 1);
             var audio = new Audio('../sound/present.mp3');
             audio.play();
         } else {
             row.find("td").eq(i).html(word.charAt(i)).css("background-color", "cornflowerblue");
-            word = word.substring(0, i) + "." + word.substring(i + 1);
             var audio = new Audio('../sound/incorrect.mp3');
             audio.play();
         }
-        await new Promise(done => setTimeout(() => done(), 200));
+        await new Promise(done => setTimeout(() => done(), 250));
     }
 
     if((data.turn != 5) && (data.status != "won") && data.status != "lost") {
         var nextRow = $("#lingoTable tr").eq(data.turn + 1);
         for(i = 0; i < data.feedback.length; i++) {
-            nextRow.find("td").eq(i).html(word.charAt(i));
+            nextRow.find("td").eq(i).html(correctWord.charAt(i));
         }
     }
 
 }
 
 function gameOver() {
+    var data;
+
     $.ajax({
         url : '/games/' + gameId + '/end',
         method : 'GET',
-        async : false
+        async : false,
+        success : function(response) {
+            data = response;
+        }
     });
 
     var audio = new Audio('../sound/error.mp3');
     audio.play();
 
-    $("#gameFeedback").html("Game over!").css("color", "red");
+    startTimer(0, false);
+    clearInterval(window.interval);
+    $("#gameFeedback").html("Game over!\nHet woord was '" + data.word + "'!").css("color", "red");
     $("#gameButtons").show();
     $("#inputFieldText").remove();
 }
