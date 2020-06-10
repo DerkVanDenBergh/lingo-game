@@ -12,4 +12,6 @@ public interface IGameService {
     Game save(Game game);
 
     Optional<Game> findById(Long id);
+
+    public String generateFeedback(String correctWord, String guessedWord);
 }

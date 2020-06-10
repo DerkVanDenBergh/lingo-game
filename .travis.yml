@@ -1,8 +1,26 @@
 language: java
+env:
+  global:
+    - CODECOV_TOKEN="04a93625-4c66-4ada-8ed9-03e93732f2fd"
 jdk:
   - openjdk-ea
 before_install:
   - chmod +x mvnw
+
+addons:
+  sonarcloud:
+    organization: "derkvandenbergh"
+    token:
+      secure: "VriY9E5DcOOnFhE5D5BV77wvYeBVpSKjVXICvr/ArOPKRBrnBIZPSyip7o+orcsIkn6trELYR5wzCOVbn9PEW1HcqLhT6RdKB8H3Iz7kkoCOll0T/VNKJOWY83dMmgAbuUmRdbg9ma7PrPXEvF/eknQz
+              JGO+LXWFDlJwNFiPi7+/OXsklQeLY5uOurbTXw2Zx3NthGKr2QcKtDQ5uur5nImubi2AtmxG+O7WCyMccsCn7xuijcNAbnhnSiVQYB2LZm4hrGSfFeikZ3Vn7JstxrN5mXioI9OtKj4WXAa7qiR1pncR5eqJkN+wNt2
+              qsnUyAdNloyzFz00GnlI4zU7KW8OTA2UNJM4iweezPcBR//yR6JqU84KfTWl3X6s53/9v8fjz77jlsaVsxiKkqp965JLQJjMTBojV20gPR3WPNZT0CToYCh9QedTEASxuwyWj3pKsbVouWD/x9QKwu5wWYmq2PH+kgn
+              cD4Hz6Ra1RwNTMnbbjVwUf41Y1ZspL77e4RoW3GDaLsScqRxirJQYs1nyesiE0XurvQdKQUP7RMFxZJniOM+yBfKQDAnY/76OFEm7hWLQ7qO38VboS7YcCzYbm/jyFKvPESvlWey9TsfVE8Y0aDgqgcRcxdZHS4/ltD
+              8f+cJ+8yI8JlZt3wti7bKTYQBxI5Hfzysyq9Yva/dc="
+
+script:
+  # the following command line builds the project, runs the tests with coverage and then execute the SonarCloud analysis
+  - mvn clean org.jacoco:jacoco-maven-plugin:prepare-agent install sonar:sonar -Dsonar.projectKey=DerkVanDenBergh_lingo-game
+
 deploy:
   provider: heroku
   api-key:
@@ -12,3 +30,6 @@ deploy:
             EtXxZidwwT04JynA/erwa8sVsE+tWGz5BNfwLmdaAMPbrhJhQ6pEY+UnIkrQNbZitDbAFjs+o8I9s04nWLKs3BcE/1F0nKyyL5/lk6UvQfl9EvhG9HUGa2xTMWo3xf+huInccFi8xA1ThFDYpiicWT6dIzz9yEHCmKh
             Crze16ib2BaPyhT8uO06qF4NGqI3NMkjldgq+85AH4="
   app: lingo-game-derk
+after_success:
+  - bash <(curl -s https://codecov.io/bash)
+  - codecov
