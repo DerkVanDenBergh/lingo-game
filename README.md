@@ -1,0 +1,1 @@
+[![Build Status](https://travis-ci.com/DerkVanDenBergh/lingo-game.svg?token=xxQrEZvDMqo1qQjSCuLR&branch=master)](https://travis-ci.com/DerkVanDenBergh/lingo-game)

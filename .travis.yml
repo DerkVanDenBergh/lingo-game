@@ -6,5 +6,9 @@ before_install:
 deploy:
   provider: heroku
   api-key:
-    secure: $HEROKU_API_KEY
+    secure: "MOzEpq7VzMfUcus66lGYGfPSWXypl9APIafvxF/QwajpG+uTQOq5EdLKNkeZe/iN+bbjM99usdjwrsHWkIZVi7757vfKmQoMu/LR5NJIv7DorCwKYbqXZsbTyEHnxYxEmwhR9T/xFudMIizFYcBcGRZ/
+            Gh2b40YMU9QGgmL6FROEj879mnF2LYzAaY87zgdRwwuYYClRz2HQN3AeBJEhnEN/955m5BNc6eyTKSiFeTn8Yxy9ykAI7uCQR8opui7eApuYTFHl3ySGaMOKowjUrSBfj6/mvI34CUoko2+IG1CHL4l0ZqwQvz/UQfw
+            jIMtmOa1FWJKKL9AH9QFmNiocU6qfYRjMpoFahb66b14aTDbNm1F+CQXR0frTdXX4+Q74xvl5gfWrJIVDOh9CpiUvjcuvh5yXfkDgWbFNl1GtF5uopbcPWnkUjYoJJtg/pC8LNnvWmJuHDqmx6xRr9MDDk2AKTqQi2Y
+            EtXxZidwwT04JynA/erwa8sVsE+tWGz5BNfwLmdaAMPbrhJhQ6pEY+UnIkrQNbZitDbAFjs+o8I9s04nWLKs3BcE/1F0nKyyL5/lk6UvQfl9EvhG9HUGa2xTMWo3xf+huInccFi8xA1ThFDYpiicWT6dIzz9yEHCmKh
+            Crze16ib2BaPyhT8uO06qF4NGqI3NMkjldgq+85AH4="
   app: lingo-game-derk
