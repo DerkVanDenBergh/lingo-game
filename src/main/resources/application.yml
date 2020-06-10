@@ -6,9 +6,9 @@ spring:
     banner-mode: "off"
   datasource:
     driver-class-name: com.mysql.cj.jdbc.Driver
-    url: jdbc:mysql://sql7.freemysqlhosting.net:3306/sql7347194
-    username: sql7347194
-    password: U2DTdbdPNa
+    url: jdbc:mysql://remotemysql.com:3306/sRkfdSF6hV
+    username: sRkfdSF6hV
+    password: Zr1PaGimzC
   jpa:
     database: mysql
     hibernate:
