@@ -20,6 +20,15 @@ public class WordService implements IWordService {
     }
 
     @Override
+    public Word save(Word word) {
+        return repository.save(word);
+    }
+    @Override
+    public Iterable<Word> saveAll(Iterable<Word> words) {
+        return repository.saveAll(words);
+    }
+
+    @Override
     public Word findRandom(int length) {
         List<Word> wordList = (List<Word>) repository.findAll();
 
