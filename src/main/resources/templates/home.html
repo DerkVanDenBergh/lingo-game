@@ -1,0 +1,16 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="https://www.thymeleaf.org" xmlns:sec="https://www.thymeleaf.org/thymeleaf-extras-springsecurity3">
+    <head>
+        <title>Lingo!</title>
+        <link rel="stylesheet" type="text/css" href="/css/app.css">
+        <link rel="stylesheet" type="text/css" href="/css/home.css">
+    </head>
+    <body>
+        <div class="menu-wrapper">
+            <div class="menu-header">Welkom bij Lingo!</div>
+            <p class="menu-text">Om te spelen heb je een account nodig.</p>
+            <div class="menu-option"><a th:href="@{/tutorial}">Inloggen</a></div>
+            <div class="menu-option"><a th:href="@{/register}">Registreren</a></div>
+        </div>
+    </body>
+</html>

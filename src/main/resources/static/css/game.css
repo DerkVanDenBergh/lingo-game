@@ -1,0 +1,143 @@
+#panelWrapper {
+    height: 72%;
+    width: 100%;
+}
+
+.half-panel {
+    width: 45%;
+    height: 100%;
+    padding: 2%;
+}
+
+.menu-wrapper {
+    padding: 2%;
+    background-color: white;
+    color: #037dfe;
+    height: 65vh;
+    border-radius: 20px;
+}
+
+.input-field {
+    margin: 2%;
+    padding: 2%;
+    background-color: white;
+    color: #037dfe;
+    height: 13%;
+    width: 92%;
+    text-align: center;
+    border-radius: 20px;
+}
+
+#inputFieldText {
+    width: 47%;
+    color: #037dfe;
+    background-color: white;
+    border: #037dfe 2px solid;
+    height: 10vh;
+    font-size: 4rem;
+    padding: 1% 2% 1%;
+    border-radius: 20px;
+}
+
+#gameFeedback {
+    float: right;
+    width: 47%;
+    color: #037dfe;
+    background-color: white;
+    height: 10vh;
+    font-size: 4rem;
+    padding: 1% 0 1%;
+    text-align: center;
+}
+
+#gameButtons {
+    float: left;
+    display: none;
+    width: 47%;
+    color: #037dfe;
+    background-color: white;
+    height: 10vh;
+    font-size: 4rem;
+    padding: 1% 2% 1%;
+    text-align: center;
+}
+
+#gameButtons a {
+    text-decoration: none;
+    margin-right: 5%;
+    background-color: cornflowerblue;
+    border-radius: 20px;
+    color: white;
+    padding: 1% 4% 1%;
+}
+
+#videoElement {
+    width: 60%;
+    height: 100%;
+    background-color: #666;
+    float: left;
+}
+
+#gameInformation {
+    width: 40%;
+    height: 100%;
+    float: right
+}
+
+#timer {
+    height: 32.5vh;
+    text-align: center;
+    padding-top: 7vh;
+    box-sizing: border-box;
+}
+
+#timerClock {
+    font-size: 5rem;
+}
+
+#score {
+    height: 32.5vh;
+    box-sizing: border-box;
+    padding-top: 7vh;
+    text-align: center;
+}
+
+#scoreCount {
+    font-size: 5rem;
+}
+
+#lingoTable {
+    height: 65vh;
+    width: 80%;
+    margin-left: 5%;
+    background-color: cornflowerblue;
+    border-color: cornflowerblue;
+    border-width: 3px;
+    border-style: solid;
+    border-spacing: 0;
+    -webkit-transform: rotateY(60deg);
+    transform: rotateY(-25deg);
+    transform: rotateY(-25deg);
+    font-weight: bold;
+}
+
+#lingoTable tr td {
+    border-color: white;
+    border-width: 3px;
+    border-style: solid;
+    color: white;
+    text-align: center;
+    font-size: 4rem;
+    text-transform: capitalize;
+}
+
+video {
+    object-fit: cover;
+    border-radius: 20px;
+}
+
+#tableWrapper {
+    -webkit-perspective: 1000px;
+    perspective: 1000px;
+    background-color: transparent;
+}

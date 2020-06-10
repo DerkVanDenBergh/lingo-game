@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="https://www.thymeleaf.org" xmlns:sec="https://www.thymeleaf.org/thymeleaf-extras-springsecurity3">
+<head>
+    <title>Lingo!</title>
+    <link rel="stylesheet" type="text/css" href="/css/app.css">
+    <link rel="stylesheet" type="text/css" href="/css/home.css">
+</head>
+<body>
+<div class="menu-wrapper">
+    <div class="menu-header">Speluitleg</div>
+    <div class="menu-text">
+        <br>De eerste letter van het te raden woord wordt getoond.<br><br>
+
+        Een beurt is alleen geldig als er binnen 10 seconden wordt gereageerd en het te raden woord aan de volgende eisen voldoet:<br>
+        <ol>
+            <li>Het woord bestaat</li>
+            <li>Het woord is juist gespeld</li>
+            <li>Het woord begint met de getoonde beginletter</li>
+            <li>Het woord bestaat uit het gegeven aantal letters</li>
+            <li>Het woord schrijf je niet met een hoofdletter, zoals plaats- en eigennamen</li>
+            <li>Het woord bevat geen leestekens, zoals apostrofs, koppelstreepjes en punten</li>
+        </ol>
+
+        Na een geldige beurt krijgt de speler feedback per letter op het geraden woord:<br>
+        <ol>
+            <li>De letter komt niet in het woord voor (absent)</li>
+            <li>De letter komt in het woord voor, maar staat niet op de juiste plek (present)</li>
+            <li>De letter komt in het woord voor en staat op de juiste plek (correct)</li>
+        </ol>
+
+        Een ongeldige beurt levert enkel de feedback op dat het hele woord ongeldig is. Het kost dan ook een raadbeurt. Dit geldt ook voor het te laat reageren!
+    </div>
+    <div class="menu-option"><a th:href="@{/game}">Spelen</a></div>
+    <div class="menu-option"><a th:href="@{/scoreboard}">Scoreboard</a></div>
+</div>
+</body>
+</html>

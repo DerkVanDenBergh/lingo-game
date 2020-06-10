@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="https://www.thymeleaf.org" xmlns:sec="https://www.thymeleaf.org/thymeleaf-extras-springsecurity3">
+    <head>
+        <title>Lingo!</title>
+        <link rel="stylesheet" type="text/css" href="/css/app.css">
+        <link rel="stylesheet" type="text/css" href="/css/login.css">
+    </head>
+    <body>
+        <div class="menu-wrapper">
+            <div class="menu-header">Inloggen</div>
+            <p class="menu-text">Wachtwoord vergeten? Maak even een nieuw account aan.</p>
+            <div class="error" th:if="${param.error}">
+                Foute inloggegevens.
+            </div>
+            <div class="error" th:if="${param.logout}">
+                Je bent uitgelogd.
+            </div>
+            <form th:action="@{/login}" method="post">
+                <div class="menu-input"><div><label for="username"> Gebruikersnaam : </label></div> <input id="username" type="text" name="username"/> </div>
+                <div class="menu-input"><div><label for="password"> Wachtwoord: </label></div> <input id="password" type="password" name="password"/> </div>
+                <div class="menu-button"><input type="submit" value="Sign In"/></div>
+            </form>
+        </div>
+    </body>
+</html>
