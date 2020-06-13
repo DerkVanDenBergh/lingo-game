@@ -6,6 +6,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.awt.desktop.SystemSleepListener;
+import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Optional;
@@ -33,31 +34,40 @@ public class GameService implements IGameService {
 
     @Override
     public String generateFeedback(String correctWord, String guessedWord) {
-        StringBuilder feedbackBuilder = new StringBuilder();
-        for(int i = 0; i < correctWord.length(); i++) {
-            if(guessedWord.charAt(i) == correctWord.charAt(i)) {
-                guessedWord = guessedWord.substring(0, i) + "." + guessedWord.substring(i + 1);
-                correctWord = correctWord.substring(0, i) + "." + correctWord.substring(i + 1);
-                feedbackBuilder.append("c");
+        ArrayList<Character> correctWordList = new ArrayList<>();
+        ArrayList<Character> guessedWordList = new ArrayList<>();
+        ArrayList<Character> remainingChars = new ArrayList<>();
+        char[] feedback = new char[correctWord.length()];
+
+        for (int i = 0; i < correctWord.length(); i++) {
+            feedback[i] = 'f';
+        }
+
+        for (int i = 0; i < correctWord.length(); i++) {
+            correctWordList.add(correctWord.charAt(i));
+        }
+
+        for (int i = 0; i < guessedWord.length(); i++) {
+            guessedWordList.add(guessedWord.charAt(i));
+        }
+
+        for(int i = 0; i < correctWordList.size(); i++) {
+            if(guessedWordList.get(i).equals(correctWordList.get(i))) {
+                feedback[i] = 'c';
             } else {
-                feedbackBuilder.append("f");
+                remainingChars.add(correctWordList.get(i));
             }
-            System.out.println("Ronde " + i + " f/c: \n(correct: " + correctWord + ")\n(geraden: " + guessedWord + ")" + "\n(feedback: " + feedbackBuilder.toString() + ")\n\n");
         }
 
-        String feedback = feedbackBuilder.toString();
-
-        for(int j = 0; j < correctWord.length(); j++) {
-            if((correctWord.indexOf(guessedWord.charAt(j)) != -1) && (guessedWord.charAt(j) != '.')) {
-                feedback = feedback.substring(0, j) + "a" + feedback.substring(j + 1);
-                guessedWord = guessedWord.substring(0, j) + "." + guessedWord.substring(j + 1);
-                correctWord = correctWord.substring(0, correctWord.indexOf(guessedWord.charAt(j))) + "." + correctWord.substring(correctWord.indexOf(guessedWord.charAt(j)) + 1);
+        for(int i = 0; i < guessedWordList.size(); i++) {
+            if(feedback[i] != 'c' && remainingChars.contains(guessedWordList.get(i))) {
+                feedback[i] = 'a';
+                remainingChars.remove(guessedWordList.get(i));
             }
 
-            System.out.println("Ronde " + j + " f/c: \n(correct: " + correctWord + ")\n(geraden: " + guessedWord + ")" + "\n(feedback: " + feedback + ")\n\n");
         }
 
-        return feedback;
+        return new String(feedback);
     }
 
     @Override
