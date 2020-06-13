@@ -52,7 +52,7 @@ public class GameService implements IGameService {
         }
 
         for(int i = 0; i < correctWordList.size(); i++) {
-            if(guessedWordList.get(i) == correctWordList.get(i)) {
+            if(guessedWordList.get(i).equals(correctWordList.get(i))) {
                 feedback[i] = 'c';
             } else {
                 remainingChars.add(correctWordList.get(i));
@@ -60,11 +60,9 @@ public class GameService implements IGameService {
         }
 
         for(int i = 0; i < guessedWordList.size(); i++) {
-            if(feedback[i] != 'c') {
-                if(remainingChars.contains(guessedWordList.get(i))) {
-                    feedback[i] = 'a';
-                    remainingChars.remove(guessedWordList.get(i));
-                }
+            if(feedback[i] != 'c' && remainingChars.contains(guessedWordList.get(i))) {
+                feedback[i] = 'a';
+                remainingChars.remove(guessedWordList.get(i));
             }
 
         }
