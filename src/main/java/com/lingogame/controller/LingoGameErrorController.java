@@ -14,7 +14,7 @@ public class LingoGameErrorController implements ErrorController {
     public String handleError(HttpServletRequest request) {
         Integer statusCode = (Integer) request.getAttribute("javax.servlet.error.status_code");
         Exception exception = (Exception) request.getAttribute("javax.servlet.error.exception");
-        return String.format("<html><body><h2>Error Page</h2><div>Status code: <b>%s</b></div>"
+        return String.format("<html><body><h1>Foutmelding!!</h1><div>Er is iets fout gegaan. Neem contact op met de ontwikkelaar. <br><br>Status code: <b>%s</b></div>"
                         + "<div>Exception Message: <b>%s</b></div><body></html>",
                 statusCode, exception==null? "N/A": exception.getMessage());
     }

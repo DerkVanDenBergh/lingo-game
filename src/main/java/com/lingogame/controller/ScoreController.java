@@ -1,16 +1,11 @@
 package com.lingogame.controller;
 
 import com.lingogame.model.Score;
-import com.lingogame.repository.ScoreRepository;
 import com.lingogame.service.ScoreService;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
-import java.util.Optional;
 
 @RestController
 public class ScoreController {
