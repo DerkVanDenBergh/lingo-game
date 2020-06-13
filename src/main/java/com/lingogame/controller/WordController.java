@@ -8,9 +8,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.HashMap;
-import java.util.Iterator;
 
 @RestController
 public class WordController {
@@ -30,17 +28,6 @@ public class WordController {
         }
 
         wordService.saveAll(words);
-
-        return "succes";
-    }
-
-    @PostMapping(path = "/words/add", consumes = "application/json")
-    public String addWord(@RequestBody String params) {
-        JSONObject jsonObj = new JSONObject(params);
-
-        Word word = new Word(jsonObj.get("word").toString());
-
-        wordService.save(word);
 
         return "succes";
     }

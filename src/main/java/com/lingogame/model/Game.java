@@ -28,6 +28,13 @@ public class Game {
 
     }
 
+    public Game(Long id, String username, String word) {
+        this.Id = id;
+        this.username = username;
+        this.word = word;
+        this.turn = 0;
+    }
+
     public Game(String username, String word) {
         this.username = username;
         this.word = word;
