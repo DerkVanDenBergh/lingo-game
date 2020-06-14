@@ -21,17 +21,12 @@
             <li>Het woord bevat geen leestekens, zoals apostrofs, koppelstreepjes en punten</li>
         </ol>
 
-        Na een geldige beurt krijgt de speler feedback per letter op het geraden woord:<br>
-        <ol>
-            <li>De letter komt niet in het woord voor (absent)</li>
-            <li>De letter komt in het woord voor, maar staat niet op de juiste plek (present)</li>
-            <li>De letter komt in het woord voor en staat op de juiste plek (correct)</li>
-        </ol>
-
         Een ongeldige beurt levert enkel de feedback op dat het hele woord ongeldig is. Het kost dan ook een raadbeurt. Dit geldt ook voor het te laat reageren!
     </div>
-    <div class="menu-option"><a th:href="@{/game}">Spelen</a></div>
-    <div class="menu-option"><a th:href="@{/scoreboard}">Scoreboard</a></div>
+    <div id="gameButtons">
+        <a th:href="@{/game}">Spelen</a>
+        <a th:href="@{/scoreboard}">Scoreboard</a>
+    </div>
 </div>
 </body>
 </html>

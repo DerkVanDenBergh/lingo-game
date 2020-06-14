@@ -23,6 +23,7 @@ public class WordService implements IWordService {
     public Word save(Word word) {
         return repository.save(word);
     }
+
     @Override
     public Iterable<Word> saveAll(Iterable<Word> words) {
         return repository.saveAll(words);

@@ -25,12 +25,30 @@ $( document ).ready(function() {
 
     initializeLingoTable(gameInfo.firstLetter, 5);
 
+    $("#inputFieldText").focus();
+
     $("#inputFieldText").on("keydown",function search(e) {
         if(e.keyCode === 13) {
+
+            input = $(this).val();
+
+            var table = $("#lingoTable");
+
+            if(input.length > table.find("tr:first td").length) {
+                while(input.length > table.find("tr:first td").length) {
+                    input = input.substring(0, input.length - 1);
+                }
+            }
+
+            if(input.length < table.find("tr:first td").length) {
+                while(input.length < table.find("tr:first td").length) {
+                    input += ".";
+                }
+            }
             var data;
 
             $.ajax({
-                url : '/games/' + gameId + "/checkWord/" + $(this).val().toLowerCase(),
+                url : '/games/' + gameId + "/checkWord/" + input,
                 method : 'GET',
                 async : false,
                 success : function(response) {

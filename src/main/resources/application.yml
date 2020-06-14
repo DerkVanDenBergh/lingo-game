@@ -9,6 +9,9 @@ spring:
     url: jdbc:mysql://remotemysql.com:3306/sRkfdSF6hV
     username: sRkfdSF6hV
     password: Zr1PaGimzC
+    #url: jdbc:mysql://localhost:3306/lingo-game
+    #username: root
+    #password: ---
   jpa:
     database: mysql
     hibernate:
@@ -24,4 +27,4 @@ spring:
 logging:
   level:
     org:
-      springframework: ERROR
+      springframework: error
