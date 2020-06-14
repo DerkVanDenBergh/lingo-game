@@ -1,28 +1,14 @@
 package com.lingogame.service;
 
-import com.lingogame.configuration.SecurityConfig;
-import com.lingogame.configuration.security.UserDetailsServiceImpl;
-import com.lingogame.configuration.security.UserRepository;
 import com.lingogame.model.Score;
-import com.lingogame.model.Word;
-import com.lingogame.repository.GameRepository;
 import com.lingogame.repository.ScoreRepository;
-import com.lingogame.repository.WordRepository;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.mockito.Mockito;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.beans.factory.annotation.Qualifier;
-import org.springframework.boot.autoconfigure.EnableAutoConfiguration;
-import org.springframework.boot.autoconfigure.security.servlet.SecurityAutoConfiguration;
-import org.springframework.boot.test.autoconfigure.web.servlet.WebMvcTest;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.boot.test.mock.mockito.MockBean;
-import org.springframework.security.core.userdetails.UserDetailsService;
-import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.context.junit4.SpringRunner;
-import org.springframework.test.context.web.WebAppConfiguration;
-import org.springframework.web.context.WebApplicationContext;
 
 import java.security.SecureRandom;
 import java.util.ArrayList;

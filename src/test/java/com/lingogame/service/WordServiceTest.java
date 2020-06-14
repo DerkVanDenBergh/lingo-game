@@ -1,18 +1,15 @@
 package com.lingogame.service;
 
-import com.lingogame.model.Game;
 import com.lingogame.model.Word;
 import com.lingogame.repository.WordRepository;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.mockito.Mockito;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.boot.test.autoconfigure.web.servlet.WebMvcTest;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.boot.test.mock.mockito.MockBean;
 import org.springframework.test.context.junit4.SpringRunner;
 
-import java.security.Principal;
 import java.security.SecureRandom;
 import java.util.ArrayList;
 

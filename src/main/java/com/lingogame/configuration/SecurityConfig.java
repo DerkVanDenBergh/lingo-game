@@ -1,11 +1,8 @@
 package com.lingogame.configuration;
 
-import com.lingogame.configuration.security.UserDetailsServiceImpl;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
-import org.springframework.context.annotation.Primary;
 import org.springframework.http.HttpMethod;
 import org.springframework.security.authentication.AuthenticationManager;
 import org.springframework.security.config.annotation.authentication.builders.AuthenticationManagerBuilder;
@@ -28,14 +25,13 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
     protected void configure(final HttpSecurity http) throws Exception {
         http.csrf().disable()
                 .authorizeRequests()
-                .antMatchers(HttpMethod.POST, "/words/add/", "/words/import/", "/words/**", "/registration").permitAll()
-                .antMatchers("/", "/home", "/css/**", "/images/**", "/words/**", "/register", "/registration").permitAll()
+                .antMatchers(HttpMethod.POST, "/words/add/", "/words/import/", "/words/**", "/registration", "/login").permitAll()
+                .antMatchers("/", "/home", "/css/**", "/images/**", "/words/**", "/register", "/registration", "/login").permitAll()
                 .anyRequest().authenticated()
                 .and()
                 .formLogin()
                 .loginPage("/login")
                 .permitAll()
-                .successForwardUrl("/tutorial")
                 .and()
                 .logout()
                 .permitAll();

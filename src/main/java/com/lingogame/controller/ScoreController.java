@@ -2,7 +2,6 @@ package com.lingogame.controller;
 
 import com.lingogame.model.Score;
 import com.lingogame.service.IScoreService;
-import com.lingogame.service.ScoreService;
 import org.json.JSONObject;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
