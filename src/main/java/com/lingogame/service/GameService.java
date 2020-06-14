@@ -81,21 +81,25 @@ public class GameService implements IGameService {
     }
 
     @Override
-    public HashMap<String, Object> processWord(Game game, String word) {
+    public HashMap<String, Object> processWord(Game game, String word, boolean wordExists) {
 
         var params = new HashMap<String, Object>();
 
-        if(game.getWord().equals(word)) {
+        if(game.getWord().equals(word) && wordExists) {
             game.setFeedback(generateFeedback(game.getWord(), word));
             game.setScore(game.getScore() + (game.getWord().length() * 10));
             game.setTurn(game.getTurn() + 1);
             params.put("status", "won");
         } else {
-            if(game.getTurn() >= 4) {
+            if (game.getTurn() >= 4) {
                 game.setConcluded(true);
                 game.setTurn(game.getTurn() + 1);
                 game.setFeedback(generateFeedback(game.getWord(), word));
                 params.put("status", "lost");
+            } else if (!wordExists) {
+                game.setFeedback("f".repeat(word.length()));
+                game.setTurn(game.getTurn() + 1);
+                params.put("status", "ongoing");
             } else {
                 game.setFeedback(generateFeedback(game.getWord(), word));
                 game.setTurn(game.getTurn() + 1);

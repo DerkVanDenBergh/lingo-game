@@ -52,11 +52,13 @@ public class GameController {
 
         List<String> wordList = words.stream().map(Word::getWord).collect(Collectors.toList());
 
+        boolean wordExists = true;
+
         if(!wordList.contains(word)) {
-            return "f".repeat(word.length());
+            wordExists = false;
         }
 
-        HashMap<String, Object> params = gameService.processWord(game, word);
+        HashMap<String, Object> params = gameService.processWord(game, word, wordExists);
 
         return new JSONObject(params).toString();
     }

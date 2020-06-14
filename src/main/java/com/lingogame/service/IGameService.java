@@ -17,7 +17,7 @@ public interface IGameService {
 
     HashMap<String, Object> createGame(String username, IWordService wordService);
 
-    HashMap<String, Object> processWord(Game game, String word);
+    HashMap<String, Object> processWord(Game game, String word, boolean wordExists);
 
     HashMap<String, Object> processRound(Game game, IWordService wordService);
 

@@ -16,6 +16,7 @@ import java.util.HashMap;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.mockito.ArgumentMatchers.any;
+import static org.mockito.ArgumentMatchers.anyBoolean;
 
 @RunWith(SpringRunner.class)
 @SpringBootTest(classes = GameService.class)
@@ -95,7 +96,7 @@ public class GameServiceTest {
         Mockito.when(repository.save(any(Game.class))).thenReturn(new Game(1L,"user1", "tests"));
 
         // To string because comparing hashmaps is not possible
-        assertEquals(params.toString(), gameService.processWord(game, "tests").toString());
+        assertEquals(params.toString(), gameService.processWord(game, "tests", true).toString());
     }
 
     @Test
@@ -113,7 +114,7 @@ public class GameServiceTest {
         Mockito.when(repository.save(any(Game.class))).thenReturn(new Game(1L,"user1", "tests"));
 
         // To string because comparing hashmaps is not possible
-        assertEquals(params.toString(), gameService.processWord(game, "round").toString());
+        assertEquals(params.toString(), gameService.processWord(game, "round", true).toString());
     }
 
     @Test
@@ -133,7 +134,7 @@ public class GameServiceTest {
         Mockito.when(repository.save(any(Game.class))).thenReturn(new Game(1L,"user1", "tests"));
 
         // To string because comparing hashmaps is not possible
-        assertEquals(params.toString(), gameService.processWord(game, "round").toString());
+        assertEquals(params.toString(), gameService.processWord(game, "round", true).toString());
     }
 
     @Test

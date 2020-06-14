@@ -90,7 +90,7 @@ public class GameControllerTest {
 
         Mockito.when(gameService.findById(any(Long.class))).thenReturn(mockGame);
 
-        Mockito.when(gameService.processWord(any(Game.class), eq("tests"))).thenReturn(params);
+        Mockito.when(gameService.processWord(any(Game.class), eq("tests"), anyBoolean())).thenReturn(params);
 
         MvcResult result = mockMvc.perform(get("/games/1/checkWord/tests")
                 .contentType("application/json"))
@@ -123,7 +123,7 @@ public class GameControllerTest {
 
         Mockito.when(gameService.findById(any(Long.class))).thenReturn(mockGame);
 
-        Mockito.when(gameService.processWord(any(Game.class), eq("tests"))).thenReturn(params);
+        Mockito.when(gameService.processWord(any(Game.class), eq("tests"), anyBoolean())).thenReturn(params);
 
         MvcResult result = mockMvc.perform(get("/games/1/checkWord/tests")
                 .contentType("application/json"))
