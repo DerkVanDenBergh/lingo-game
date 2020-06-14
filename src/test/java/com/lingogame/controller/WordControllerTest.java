@@ -1,5 +1,6 @@
 package com.lingogame.controller;
 
+import com.lingogame.configuration.security.UserController;
 import com.lingogame.model.Word;
 import com.lingogame.service.IWordService;
 import org.json.JSONObject;
@@ -10,6 +11,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.autoconfigure.web.servlet.WebMvcTest;
 import org.springframework.boot.test.mock.mockito.MockBean;
 import org.springframework.http.MediaType;
+import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.test.context.support.WithMockUser;
 import org.springframework.test.context.junit4.SpringRunner;
 import org.springframework.test.web.servlet.MockMvc;
@@ -34,6 +36,12 @@ public class WordControllerTest {
 
     @MockBean
     private IWordService wordService;
+
+    @MockBean
+    private UserDetailsService userDetailsService;
+
+    @MockBean
+    private UserController userController;
 
     @Test
     public void importingWordsShouldReturnSucces() throws Exception {

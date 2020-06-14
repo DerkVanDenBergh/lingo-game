@@ -17,3 +17,42 @@ body {
     width: 100%;
     color: white;
 }
+
+#gameButtons {
+    display: flex;
+}
+
+#gameButtons a {
+    text-decoration: none;
+    margin-right: 5%;
+    background-color: cornflowerblue;
+    border-radius: 20px;
+    color: white;
+    padding: 1% 4% 1%;
+}
+
+#scoreTable {
+    width: 100%;
+    border-collapse: collapse;
+}
+
+#scoreTable tr:first-of-type {
+    border-bottom: cornflowerblue 2px solid;
+    height: 40px;
+    font-weight: bold;
+}
+
+#scoreTable tr:last-of-type {
+    border-bottom: none;
+    height: 40px;
+    margin-bottom: 60px;
+}
+
+#scoreTable tr {
+    border-bottom: gray 1px solid;
+    height: 40px;
+}
+
+#scoreTable tr td {
+    vertical-align: middle;
+}

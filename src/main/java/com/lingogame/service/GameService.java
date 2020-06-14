@@ -64,7 +64,6 @@ public class GameService implements IGameService {
                 feedback[i] = 'a';
                 remainingChars.remove(guessedWordList.get(i));
             }
-
         }
 
         return new String(feedback);

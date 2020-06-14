@@ -12,5 +12,5 @@ public interface IWordService {
 
     Iterable<Word> saveAll(Iterable<Word> words);
 
-    Word save(Word words);
+    Word save(Word word);
 }

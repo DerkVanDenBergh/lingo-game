@@ -27,4 +27,4 @@ spring:
 logging:
   level:
     org:
-      springframework: ERROR
+      springframework: error

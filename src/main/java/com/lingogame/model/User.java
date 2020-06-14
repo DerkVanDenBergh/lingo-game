@@ -3,7 +3,8 @@ package com.lingogame.model;
 import javax.persistence.*;
 
 @Entity
-public class Score {
+@Table(name = "user")
+public class User {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -11,15 +12,14 @@ public class Score {
 
     private String username;
 
-    private int score;
+    private String password;
 
-    public Score() {
-
+    public User () {
     }
 
-    public Score(String username, int score) {
+    public User (String username, String password) {
         this.username = username;
-        this.score = score;
+        this.password = password;
     }
 
     public Long getId() {
@@ -34,11 +34,11 @@ public class Score {
         this.username = username;
     }
 
-    public int getScore() {
-        return score;
+    public String getPassword() {
+        return password;
     }
 
-    public void setScore(int score) {
-        this.score = score;
+    public void setPassword(String password) {
+        this.password = password;
     }
 }

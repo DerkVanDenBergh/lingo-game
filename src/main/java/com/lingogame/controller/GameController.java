@@ -1,7 +1,9 @@
 package com.lingogame.controller;
 
 import com.lingogame.model.Game;
+import com.lingogame.model.Score;
 import com.lingogame.service.IGameService;
+import com.lingogame.service.IScoreService;
 import com.lingogame.service.IWordService;
 import org.json.JSONObject;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -20,6 +22,9 @@ public class GameController {
 
     @Autowired
     private IWordService wordService;
+
+    @Autowired
+    private IScoreService scoreService;
 
     @GetMapping(path = "/games/new", produces = "application/json")
     public String newGame(Principal principal) {
@@ -69,6 +74,8 @@ public class GameController {
         }
 
         HashMap<String, Object> params = gameService.endGame(game);
+
+        scoreService.save(new Score(principal.getName(), game.getScore()));
 
         return new JSONObject(params).toString();
     }
