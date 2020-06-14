@@ -2,6 +2,7 @@ package com.lingogame.controller;
 
 import com.lingogame.model.Game;
 import com.lingogame.model.Score;
+import com.lingogame.model.Word;
 import com.lingogame.service.IGameService;
 import com.lingogame.service.IScoreService;
 import com.lingogame.service.IWordService;
@@ -13,6 +14,8 @@ import org.springframework.web.bind.annotation.RestController;
 
 import java.security.Principal;
 import java.util.HashMap;
+import java.util.List;
+import java.util.stream.Collectors;
 
 @RestController
 public class GameController {
@@ -43,6 +46,14 @@ public class GameController {
 
         if(!principal.getName().equals(game.getUsername())) {
             return "invalid user";
+        }
+
+        List<Word> words = wordService.findAll();
+
+        List<String> wordList = words.stream().map(Word::getWord).collect(Collectors.toList());
+
+        if(!wordList.contains(word)) {
+            return "f".repeat(word.length());
         }
 
         HashMap<String, Object> params = gameService.processWord(game, word);

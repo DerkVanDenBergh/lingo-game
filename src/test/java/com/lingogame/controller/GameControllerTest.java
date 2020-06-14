@@ -2,6 +2,7 @@ package com.lingogame.controller;
 
 import com.lingogame.configuration.security.UserController;
 import com.lingogame.model.Game;
+import com.lingogame.model.Word;
 import com.lingogame.service.IGameService;
 import com.lingogame.service.IWordService;
 import com.lingogame.service.ScoreService;
@@ -19,7 +20,9 @@ import org.springframework.test.web.servlet.MockMvc;
 import org.springframework.test.web.servlet.MvcResult;
 
 import java.security.Principal;
+import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.List;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
@@ -109,6 +112,12 @@ public class GameControllerTest {
 
         Principal mockPrincipal = Mockito.mock(Principal.class);
         Mockito.when(mockPrincipal.getName()).thenReturn("user1");
+
+        List<Word> words = new ArrayList<>();
+
+        words.add(new Word("tests"));
+
+        Mockito.when(wordService.findAll()).thenReturn(words);
 
         Game mockGame = new Game(1L, "user1", "tests");
 

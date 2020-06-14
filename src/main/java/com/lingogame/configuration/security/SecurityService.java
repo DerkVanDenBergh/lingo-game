@@ -40,7 +40,6 @@ public class SecurityService implements ISecurityService {
 
         if (usernamePasswordAuthenticationToken.isAuthenticated()) {
             SecurityContextHolder.getContext().setAuthentication(usernamePasswordAuthenticationToken);
-            System.out.println("Auto login successfully!");
         }
     }
 }
