@@ -114,7 +114,7 @@
                 <!-- Threshold -->
                 <configuration>
                     <excludes>
-                        <exclude>com/lingogame/configuration/*</exclude>
+                        <exclude>com/lingogame/configuration/**/*</exclude>
                         <exclude>com/lingogame/model/*</exclude>
                     </excludes>
                     <rules>
